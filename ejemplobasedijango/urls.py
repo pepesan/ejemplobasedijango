@@ -19,7 +19,7 @@ from django.urls import include, path
 urlpatterns = [
     path('',include('home.urls')),
     path('polls/', include('polls.urls')),
-    path('libros/', include('libros.urls')),
+    path('', include('libros.urls')),
     path('admin/', admin.site.urls),
 ]
 
@@ -27,6 +27,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+from libros.scaffolding import LibroCrudManager # or from views import BookCrudManager depending on where you've put it
+book_crud = LibroCrudManager()
+urlpatterns += book_crud.get_url_patterns()
 
 
 

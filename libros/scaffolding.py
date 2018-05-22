@@ -3,3 +3,4 @@ import libros.models as models
 
 class LibroCrudManager(CrudManager):
     model = models.Libro
+    prefix='libros'
