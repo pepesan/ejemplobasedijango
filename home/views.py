@@ -11,3 +11,20 @@ def index(request):
     template = loader.get_template('home/index.html')
     context = {'titulo': titulo}
     return HttpResponse(template.render(context, request))
+
+
+def detail(request,n):
+    template = loader.get_template('home/detail.html')
+    context={
+        'n':n,
+        'param_post': request.POST,
+    }
+    return HttpResponse(template.render(context, request))
+
+
+def nombre(request,nombre):
+    template = loader.get_template('home/nombre.html')
+    context = {
+        'nombre': nombre
+    }
+    return HttpResponse(template.render(context, request))

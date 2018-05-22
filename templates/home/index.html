@@ -1,5 +1,10 @@
 <ul>
     <li><a href="{% url 'home:index' %}">Home</a></li>
+    <li><a href="home/2">Enlace con numero</a></li>
+    <li><a href="{% url 'home:detail' 2 %}">Enlace con numero v2</a></li>
+    <li><a href="home/pepe">Enlace con nombre</a></li>
+    <li><a href="{% url 'home:nombre' 'pepe' %}">Enlace con nombre v2</a></li>
     <li><a href="{% url 'polls:index' %}">Polls</a></li>
+    <li><a href="{% url 'libros:libros_libro_list' %}">Libros</a></li>
 </ul>
 <h3>{{ titulo }}</h3>
