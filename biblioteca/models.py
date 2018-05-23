@@ -27,6 +27,9 @@ class Genre(models.Model):
         """
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('genre-detail', kwargs={'pk': self.pk})
+
 
 class Author(models.Model):
     """
@@ -84,7 +87,7 @@ class Book(models.Model):
         """
         Devuelve el URL a una instancia particular de Book
         """
-        return reverse('book-detail', args=[str(self.id)])
+        return reverse('genre-detail', args=[str(self.id)])
 
 
 

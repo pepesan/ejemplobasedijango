@@ -20,7 +20,9 @@ urlpatterns = [
     path('',include('home.urls')),
     path('polls/', include('polls.urls')),
     path('', include('libros.urls')),
+    path('biblioteca/', include('biblioteca.urls')),
     path('admin/', admin.site.urls),
+
 ]
 
 from django.conf import settings
