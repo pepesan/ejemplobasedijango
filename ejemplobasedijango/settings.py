@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'generic_scaffold',
     'libros',
     'home',
-    'bootstrap4'
+    'bootstrap4',
+    'biblioteca'
 
 ]
 
