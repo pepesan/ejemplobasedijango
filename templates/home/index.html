@@ -1,16 +1,4 @@
-{% load bootstrap4 %}
-{# Load CSS and JavaScript #}
-{% bootstrap_css %}
-{% bootstrap_javascript jquery='full' %}
-<ul>
-    <li><a href="{% url 'home:index' %}">Home</a></li>
-    <li><a href="home/2">Enlace con numero</a></li>
-    <li><a href="{% url 'home:detail' 2 %}">Enlace con numero v2</a></li>
-    <li><a href="home/pepe">Enlace con nombre</a></li>
-    <li><a href="{% url 'home:nombre' 'pepe' %}">Enlace con nombre v2</a></li>
-    <li><a href="{% url 'polls:index' %}">Polls</a></li>
-    <!-- Cambiar a un enlace nombrado por urls -->
-    <li><a href="/libros">Libros</a></li>
-    <li><a href="{% url 'genre-list' %}">Biblioteca</a></li>
-</ul>
-<h3>{{ titulo }}</h3>
+{% extends 'theme/base.html' %}
+{% block content %}
+        <h3>{{ titulo }}</h3>
+{% endblock %}

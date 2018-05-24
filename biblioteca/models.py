@@ -1,5 +1,6 @@
 from django.db import models
-from django.urls import reverse #Used to generate URLs by reversing the URL patterns
+#Used to generate URLs by reversing the URL patterns
+from django.urls import reverse
 import uuid  # Required for unique book instances
 
 class Language(models.Model):
