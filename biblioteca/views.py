@@ -4,6 +4,8 @@ from django.views.generic.edit import CreateView
 from django.views.generic.edit import UpdateView
 from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
+from django.shortcuts import render
+from django_tables2 import RequestConfig
 
 from biblioteca.models import Genre
 
@@ -39,3 +41,15 @@ class GenreUpdate(UpdateView):
 class GenreDelete(DeleteView):
     model = Genre
     success_url = reverse_lazy('genre-list')
+
+import django_tables2 as tables
+
+class GenreTable(tables.Table):
+    class Meta:
+        model = Genre
+
+def simple_list(request):
+
+    table = GenreTable(Genre.objects.all())
+    RequestConfig(request).configure(table)
+    return render(request, 'biblioteca/simple_list.html', {'table': table})

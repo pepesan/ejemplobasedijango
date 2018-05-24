@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'libros',
     'home',
     'bootstrap4',
-    'biblioteca'
+    'biblioteca',
+    'django_tables2',
 
 ]
 
