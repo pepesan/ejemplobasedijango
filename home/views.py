@@ -44,15 +44,30 @@ def devuelveJson(request):
 
 from django.views.decorators.csrf import csrf_exempt
 
-@csrf_exempt
-def sendjson(request):
-    if request.body:
-        # Decode data to a dict object
-        json_data = json.loads(request.body)
 
-        # Do things with json_data ...
-    else:
-        json_data={
-            'error': "No hay datos"
-        }
-    return JsonResponse(json_data)
+@csrf_exempt
+def SendJson(request):
+    data={'error':'No hay datos'}
+    try:
+        data = json.loads(request.body)
+        print (data)
+    except:
+        print ('nope')
+    return JsonResponse(data)
+
+@csrf_exempt
+def sendForm(request):
+    data={'error':'No hay datos'}
+    try:
+        post_data = request.POST
+        keys=post_data.keys()
+
+        #print (post_data)
+        #print(keys)
+        for key in keys:
+            #print(post_data[key])
+            data[key]=post_data[key]
+        del data['error']
+    except:
+        print ('nope')
+    return JsonResponse(data)
