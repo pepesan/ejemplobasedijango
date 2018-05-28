@@ -8,6 +8,7 @@ from django.shortcuts import render
 from django_tables2 import RequestConfig
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+import json
 
 from biblioteca.models import Genre
 
@@ -62,10 +63,13 @@ def list_json(request):
     data={'error':"No hay Datos"}
     status=500
     try:
-        #data['objetos']=serialize('json', Genre.objects.all())
-        data['objetos'] = list(Genre.objects.all().values('id','name'))
+        if(request.method=='GET'):
+            #data['objetos']=serialize('json', Genre.objects.all())
+            data['objetos'] = list(Genre.objects.all().values('id','name'))
 
-        print(data['objetos'])
+            print(data['objetos'])
+        if(request.method=="POST"):
+            data['objeto']={}
         status=200
         del data['error']
     except:
@@ -85,3 +89,19 @@ def get_json(request,pk):
     except:
         print ('Fallo al acceder a la BBDD')
     return JsonResponse(data,status=status)
+
+@csrf_exempt
+def create_json(request):
+    data = {'error': 'No hay datos'}
+    status = 500
+    try:
+        data_post = json.loads(request.body)
+        try:
+            status = 200
+            print(data_post)
+        except:
+            data['error'] = "No se puede cargar el dato desde la BBDD"
+    except:
+        print('nope')
+        data['error']="No se puede cargar el código JSON"
+    return JsonResponse(data, status=status)
