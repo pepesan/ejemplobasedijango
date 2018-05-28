@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.utils.translation import gettext as _
 from django.http import JsonResponse
 import json
+from django.views.decorators.csrf import csrf_exempt
 
 """
 def index(request):
@@ -42,7 +43,7 @@ def devuelveJson(request):
     }
     return JsonResponse(data,status=200)
 
-from django.views.decorators.csrf import csrf_exempt
+
 
 
 @csrf_exempt

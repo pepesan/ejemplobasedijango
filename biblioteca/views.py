@@ -6,6 +6,8 @@ from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
 from django.shortcuts import render
 from django_tables2 import RequestConfig
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 from biblioteca.models import Genre
 
@@ -53,3 +55,33 @@ def simple_list(request):
     table = GenreTable(Genre.objects.all())
     RequestConfig(request).configure(table)
     return render(request, 'biblioteca/simple_list.html', {'table': table})
+
+
+@csrf_exempt
+def list_json(request):
+    data={'error':"No hay Datos"}
+    status=500
+    try:
+        #data['objetos']=serialize('json', Genre.objects.all())
+        data['objetos'] = list(Genre.objects.all().values('id','name'))
+
+        print(data['objetos'])
+        status=200
+        del data['error']
+    except:
+        print ('Fallo al acceder a la BBDD')
+    return JsonResponse(data,status=status)
+
+@csrf_exempt
+def get_json(request,pk):
+    data = {'error': "No hay Datos"}
+    status = 500
+    try:
+        #data['objetos']=serialize('json', Genre.objects.all())
+        data['objeto'] = list(Genre.objects.filter(id=pk).values('id','name'))[0]
+        #print(data['objeto'])
+        status=200
+        del data['error']
+    except:
+        print ('Fallo al acceder a la BBDD')
+    return JsonResponse(data,status=status)
