@@ -40,7 +40,7 @@ def devuelveJson(request):
         'is_active': True,
         'count': 28
     }
-    return JsonResponse(data)
+    return JsonResponse(data,status=200)
 
 from django.views.decorators.csrf import csrf_exempt
 
@@ -48,16 +48,19 @@ from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
 def SendJson(request):
     data={'error':'No hay datos'}
+    status=500
     try:
         data = json.loads(request.body)
         print (data)
+        status=200
     except:
         print ('nope')
-    return JsonResponse(data)
+    return JsonResponse(data,status=status)
 
 @csrf_exempt
 def sendForm(request):
     data={'error':'No hay datos'}
+    status=500
     try:
         post_data = request.POST
         keys=post_data.keys()
@@ -68,6 +71,7 @@ def sendForm(request):
             #print(post_data[key])
             data[key]=post_data[key]
         del data['error']
+        status=200
     except:
         print ('nope')
-    return JsonResponse(data)
+    return JsonResponse(data,status=status)

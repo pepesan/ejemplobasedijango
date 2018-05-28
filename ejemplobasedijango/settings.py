@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'bootstrap4',
     'biblioteca',
     'django_tables2',
+    'rest_framework',
+    #'restexample.apps.SnippetsConfig'
+    'restexample'
 
 ]
 
