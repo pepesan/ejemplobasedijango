@@ -1,14 +1,52 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
 from mongodbapp.models import *
+from django.template import loader
+from django.http import HttpResponse
 
 # Create your views here.
 
-class ToolListView(ListView):
+def list_view(request):
+    tools=Tool.objects
+    print(tools)
+    for t in tools:
+        print (t.label)
+    template = loader.get_template('mongodbapp/tool_list.html')
+    context = {'listado': tools}
+    return HttpResponse(template.render(context, request))
 
-    model = Tool
-    paginate_by = 100  # if pagination is desired
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
+def detail_view(request,pk):
+    tools=Tool.objects
+    print(tools)
+    for t in tools:
+        print (t.label)
+    template = loader.get_template('mongodbapp/tool_list.html')
+    context = {'listado': tools}
+    return HttpResponse(template.render(context, request))
+
+def edit_view(request):
+    tools=Tool.objects
+    print(tools)
+    for t in tools:
+        print (t.label)
+    template = loader.get_template('mongodbapp/tool_list.html')
+    context = {'listado': tools}
+    return HttpResponse(template.render(context, request))
+def create_view(request):
+    tools=Tool.objects
+    print(tools)
+    for t in tools:
+        print (t.label)
+    template = loader.get_template('mongodbapp/tool_list.html')
+    context = {'listado': tools}
+    return HttpResponse(template.render(context, request))
+
+def delete_view(request):
+    tools=Tool.objects
+    print(tools)
+    for t in tools:
+        print (t.label)
+    template = loader.get_template('mongodbapp/tool_list.html')
+    context = {'listado': tools}
+    return HttpResponse(template.render(context, request))
