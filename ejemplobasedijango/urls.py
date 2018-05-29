@@ -22,6 +22,7 @@ urlpatterns = [
     path('', include('libros.urls')),
     path('biblioteca/', include('biblioteca.urls')),
     path('admin/', admin.site.urls),
+    path('mongodb/', include('mongodbapp.urls')),
 
 ]
 

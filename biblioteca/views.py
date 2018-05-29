@@ -9,6 +9,8 @@ from django_tables2 import RequestConfig
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
+from django.template import loader
+from django.http import HttpResponse
 
 from biblioteca.models import Genre
 
@@ -105,3 +107,10 @@ def create_json(request):
         print('nope')
         data['error']="No se puede cargar el código JSON"
     return JsonResponse(data, status=status)
+
+
+def listado_sencillo(request):
+    listado=Genre.objects.all()
+    template = loader.get_template('biblioteca/genre_list2.html')
+    context = {'listado': listado}
+    return HttpResponse(template.render(context, request))

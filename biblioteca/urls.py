@@ -5,7 +5,6 @@ from biblioteca.views import *
 
 
 
-
 urlpatterns = [
     path('', GenreListView.as_view(), name='genre-list'),
     path('genre/<int:pk>', GenreDetailView.as_view(), name='genre-detail'),
@@ -13,6 +12,7 @@ urlpatterns = [
     path('genre/update/<int:pk>', GenreUpdate.as_view(), name='genre-update-form'),
     path('genre/delete/<int:pk>', GenreDelete.as_view(), name='genre-delete'),
     path('genre/list', simple_list, name='genre-list2'),
+    path('genre/list3', listado_sencillo, name='genre-list3'),
     path('genre/api', list_json, name='genre-list-api'),
     path('genre/api/<int:pk>', get_json, name='genre-get-api'),
 ]

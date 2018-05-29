@@ -44,9 +44,9 @@ INSTALLED_APPS = [
     'bootstrap4',
     'biblioteca',
     'django_tables2',
-    'rest_framework',
     #'restexample.apps.SnippetsConfig'
-    'restexample'
+    'restexample',
+    'mongodbapp'
 
 ]
 
@@ -88,6 +88,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    },
+
+    "mongo": {
+        "name": "test_project",
+        "host": "localhost",
+        "port": 27017,
+        "tz_aware": True,  # if you use timezones in django (USE_TZ = True)
     }
 }
 
