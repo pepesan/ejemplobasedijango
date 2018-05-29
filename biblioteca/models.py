@@ -60,7 +60,7 @@ class Book(models.Model):
 
     title = models.CharField(max_length=200,help_text="Introduce el título del libro")
 
-    author = models.ForeignKey('Author', on_delete=models.SET_NULL, null=True)
+    author = models.ForeignKey('Author', on_delete=models.SET_NULL, null=True, blank=True)
     # ForeignKey, ya que un libro tiene un solo autor, pero el mismo autor puede haber escrito muchos libros.
     # 'Author' es un string, en vez de un objeto, porque la clase Author aún no ha sido declarada.
 
@@ -70,9 +70,9 @@ class Book(models.Model):
     isbn = models.CharField('ISBN', max_length=13,
                             help_text='<a href="https://www.isbn-international.org/content/what-isbn">Número ISBN</a> de 13 caracteres')
 
-    genre = models.ManyToManyField(Genre, help_text="Selecciona el género de este libro")
+    genre = models.ManyToManyField(Genre, help_text="Selecciona el género de este libro", blank=True)
 
-    language = models.ManyToManyField(Language, help_text="Selecciona el idioma de este libro")
+    language = models.ManyToManyField(Language, help_text="Selecciona el idioma de este libro", blank=True)
 
     # ManyToManyField, porque un género puede contener muchos libros y un libro puede cubrir varios géneros.
     # La clase Genre ya ha sido definida, entonces podemos especificar el objeto arriba.
