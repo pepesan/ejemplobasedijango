@@ -1,0 +1,6 @@
+django==2.0.5
+django-generic-scaffold==0.5.2
+django-bootstrap4==0.0.6
+django-tables2==1.21.2
+pygments==2.2.0
+mongoengine==0.15.0
