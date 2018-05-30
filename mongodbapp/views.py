@@ -53,22 +53,27 @@ def edit_view(request,pk):
         # create a form instance and populate it with data from the request:
         form = ToolForm(request.POST)
         print(form)
+        print(request.POST)
         # check whether it's valid:
         if form.is_valid():
             # process the data in form.cleaned_data as required
             # ...
             # redirect to a new URL:
-            tool=Tool(label=form.cleaned_data['label'],description=form.cleaned_data['description'])
+            tool = Tool.objects.get(pk=pk)
+            tool.label=form.cleaned_data['label']
+            tool.description = form.cleaned_data['description']
+            #Tool(label=form.cleaned_data['label'],description=form.cleaned_data['description'])
             tool.save()
             return HttpResponseRedirect('/mongodb/tool')
 
     # if a GET (or any other method) we'll create a blank form
     else:
         tool = Tool.objects.get(pk=pk)
+
         form = ToolForm(initial={'label':tool.label,'description':tool.description})
         print(form)
     template = loader.get_template('mongodbapp/tool_update_form.html')
-    context= {'form':form}
+    context= {'form':form,'pk':pk}
     return HttpResponse(template.render(context, request))
 
 def delete_view(request,pk):

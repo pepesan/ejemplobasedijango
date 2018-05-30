@@ -1,4 +1,9 @@
 <form method="post">{% csrf_token %}
+    <!--p class="fieldWrapper">
+
+        <label for="id_pk">ID:</label>
+        <input type="text" name="pk" value="{{ pk }}" disabled/>
+    </p-->
     {{ form.as_p }}
     <input type="submit" value="Guardar" />
 </form>

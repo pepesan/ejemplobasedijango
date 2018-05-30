@@ -31,6 +31,9 @@ class Genre(models.Model):
         return reverse('genre-detail', kwargs={'pk': self.pk})
 
         #return reverse('genre-list')
+    #Para arreglar un warning :UnorderedObjectListWarning: Pagination may yield inconsistent results with an unordered object_list:
+    class Meta:
+        ordering = ['name']
 
 
 class Author(models.Model):

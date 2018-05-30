@@ -1,3 +1,4 @@
+<p><a href="{% url 'tool-list' %}"  class="btn btn-default">Volver al Listado</a> </p>
 <form method="post">{% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Guardar" />

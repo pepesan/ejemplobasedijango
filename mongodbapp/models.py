@@ -2,7 +2,7 @@ from mongoengine import Document, EmbeddedDocument, fields
 import mongoengine
 mongoengine.connect(
     db="tools",
-    host="192.168.99.100"
+    host="localhost"
 )
 
 class ToolInput(EmbeddedDocument):
