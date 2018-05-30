@@ -1,11 +1,24 @@
-
 <h1>Géneros</h1>
 <a href="{% url 'genre-create' %}">Crear Género</a>
-<ul>
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Operaciones</th>
+        </tr>
+    </thead>
 {% for genre in object_list %}
-    <li><a href="{% url 'genre-detail'  genre.id %}">{{ genre.name }}</a>: Operaciones:<a href="{% url 'genre-detail'  genre.id %}">Detalle</a><a href="{% url 'genre-update-form'  genre.id %}">Editar</a><a href="{% url 'genre-delete'  genre.id %}">Borrar</a></li>
+    <tr>
+        <td><a href="{% url 'genre-detail'  genre.id %}">{{ genre.name }}</a>
+        </td>
+        <td>
+            <a href="{% url 'genre-detail'  genre.id %}">Detalle</a>&nbsp;
+            <a href="{% url 'genre-update-form'  genre.id %}">Editar</a>&nbsp;
+            <a href="{% url 'genre-delete'  genre.id %}">Borrar</a>
+        </td>
+    </tr>
 {% empty %}
-    <li>No hay Géneros todavía</li>
+    <td colspan="2">No hay Géneros todavía</td>
 {% endfor %}
-</ul>
+</table>
 

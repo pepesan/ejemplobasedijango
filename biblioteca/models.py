@@ -30,6 +30,8 @@ class Genre(models.Model):
     def get_absolute_url(self):
         return reverse('genre-detail', kwargs={'pk': self.pk})
 
+        #return reverse('genre-list')
+
 
 class Author(models.Model):
     """
