@@ -1,3 +1,6 @@
-<p><a href="{% url 'genre-list' %}">Volver al Listado</a> </p>
-<h1>Detalles del Género</h1>
-<label>Nombre:</label><p>{{ object.name }}</p>
+{% extends 'base.html' %}
+{% block content %}
+    <p><a href="{% url 'genre-list' %}"  class="btn btn-default">Volver al Listado</a> </p>
+    <h1>Detalles del Género</h1>
+    <label>Nombre:</label><p>{{ object.name }}</p>
+{% endblock %}
