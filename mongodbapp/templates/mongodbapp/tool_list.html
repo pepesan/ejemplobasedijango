@@ -1,5 +1,5 @@
 <h1>Listado de Herramientas</h1>
-
+<a href="{% url 'tool-create'  %}">Crear Tool</a>
 <ul>
 {% for tool in listado %}
     <li><a href="{% url 'tool-detail'  tool.id %}">{{ tool.label }}</a>: Operaciones:<a href="{% url 'tool-detail'  tool.id %}">Detalle</a><a href="{% url 'tool-update-form'  tool.id %}">Editar</a><a href="{% url 'tool-delete'  tool.id %}">Borrar</a></li>
