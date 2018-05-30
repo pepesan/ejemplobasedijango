@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('mongodb/', include('mongodbapp.urls')),
 
+
 ]
 
 from django.conf import settings

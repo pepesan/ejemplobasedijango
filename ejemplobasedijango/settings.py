@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'django_tables2',
     #'restexample.apps.SnippetsConfig'
     'restexample',
-    'mongodbapp'
+    'mongodbapp',
 
 ]
 
