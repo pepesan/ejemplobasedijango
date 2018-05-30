@@ -6,7 +6,7 @@ from .forms import ToolForm
 # Create your views here.
 
 def list_view(request):
-    tools=Tool.objects
+    tools=Tool.objects.all()
     #print(tools)
     #for t in tools:
     #    print (t.label)
