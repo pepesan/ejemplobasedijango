@@ -1,18 +1,15 @@
-from django.shortcuts import render
-from django.views.generic.list import ListView
 from mongodbapp.models import *
 from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import ToolForm
-from django.views.generic.edit import CreateView
 
 # Create your views here.
 
 def list_view(request):
     tools=Tool.objects
-    print(tools)
-    for t in tools:
-        print (t.label)
+    #print(tools)
+    #for t in tools:
+    #    print (t.label)
     template = loader.get_template('mongodbapp/tool_list.html')
     context = {'listado': tools}
     return HttpResponse(template.render(context, request))
@@ -20,7 +17,7 @@ def list_view(request):
 
 def detail_view(request,pk):
     tool=Tool.objects.get(pk=pk)
-    print(tool)
+    #print(tool)
     template = loader.get_template('mongodbapp/tool_detail.html')
     context = {'objeto': tool}
     return HttpResponse(template.render(context, request))
@@ -30,7 +27,7 @@ def tool_create(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = ToolForm(request.POST)
-        print(form)
+        #print(form)
         # check whether it's valid:
         if form.is_valid():
             # process the data in form.cleaned_data as required
@@ -71,7 +68,7 @@ def edit_view(request,pk):
         tool = Tool.objects.get(pk=pk)
 
         form = ToolForm(initial={'label':tool.label,'description':tool.description})
-        print(form)
+        #print(form)
     template = loader.get_template('mongodbapp/tool_update_form.html')
     context= {'form':form,'pk':pk}
     return HttpResponse(template.render(context, request))
@@ -81,8 +78,8 @@ def delete_view(request,pk):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = ToolForm(request.POST)
-        print(form)
-        print(request.POST)
+        #print(form)
+        #print(request.POST)
         # check whether it's valid:
         tool = Tool.objects.get(pk=pk)
         # Tool(label=form.cleaned_data['label'],description=form.cleaned_data['description'])
@@ -93,7 +90,7 @@ def delete_view(request,pk):
     else:
         tool = Tool.objects.get(pk=pk)
         form = ToolForm(initial={'label':tool.label,'description':tool.description})
-        print(form)
+        #print(form)
     template = loader.get_template('mongodbapp/tool_confirm_delete.html')
     context= {'form':form,'pk':pk}
     return HttpResponse(template.render(context, request))
