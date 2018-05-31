@@ -7,3 +7,12 @@ class Course(models.Model):
 
 class Tag(models.Model):
     name = models.CharField(max_length=100)
+
+
+class Autor(models.Model):
+    name=models.CharField(max_length=100)
+    libros = models.ManyToManyField('Libro', db_table='libro_autor',
+                                  related_name='autores', blank=True)
+
+class Libro(models.Model):
+    name = models.CharField(max_length=100)
