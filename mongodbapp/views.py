@@ -33,7 +33,10 @@ def tool_create(request):
             # process the data in form.cleaned_data as required
             # ...
             # redirect to a new URL:
-            tool=Tool(label=form.cleaned_data['label'],description=form.cleaned_data['description'])
+            tool=Tool(
+                label=form.cleaned_data['label'],
+                description=form.cleaned_data['description']
+            )
             tool.save()
             return HttpResponseRedirect('/mongodb/tool')
 
@@ -77,7 +80,7 @@ def delete_view(request,pk):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
-        form = ToolForm(request.POST)
+        #form = ToolForm(request.POST)
         #print(form)
         #print(request.POST)
         # check whether it's valid:

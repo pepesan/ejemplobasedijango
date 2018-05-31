@@ -3,9 +3,11 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from .models import Snippet
 from .serializers import SnippetSerializer
+from rest_framework.decorators import api_view
 
 @csrf_exempt
-def snippet_list(request):
+@api_view(['GET', 'POST'])
+def snippet_list(request, format=None):
     """
     List all code snippets, or create a new snippet.
     """
@@ -23,7 +25,8 @@ def snippet_list(request):
         return JsonResponse(serializer.errors, status=400)
 
 @csrf_exempt
-def snippet_detail(request, pk):
+@api_view(['GET', 'PUT', 'DELETE'])
+def snippet_detail(request, pk, format=None):
     """
     Retrieve, update or delete a code snippet.
     """

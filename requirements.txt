@@ -7,3 +7,4 @@ mongoengine==0.15.0
 djangorestframework==3.8.2
 markdown==2.6.10
 django-filter==1.1.0
+httpie==0.9.9
