@@ -1,6 +1,5 @@
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
 from .models import Snippet
 from .serializers import SnippetSerializer
@@ -12,12 +11,12 @@ def snippet_list(request):
     """
     if request.method == 'GET':
         snippets = Snippet.objects.all()
-        serializer = SnippetSerializer(snippets, many=True)
-        return JsonResponse(serializer.data, safe=False)
+        serializer = SnippetSerializer(snippets, many=True,context={'request': request})
+        return JsonResponse(serializer.data, safe=False, status=200)
 
     elif request.method == 'POST':
         data = JSONParser().parse(request)
-        serializer = SnippetSerializer(data=data)
+        serializer = SnippetSerializer(data=data,context={'request': request})
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data, status=201)
@@ -34,12 +33,12 @@ def snippet_detail(request, pk):
         return HttpResponse(status=404)
 
     if request.method == 'GET':
-        serializer = SnippetSerializer(snippet)
+        serializer = SnippetSerializer(snippet,context={'request': request})
         return JsonResponse(serializer.data)
 
     elif request.method == 'PUT':
         data = JSONParser().parse(request)
-        serializer = SnippetSerializer(snippet, data=data)
+        serializer = SnippetSerializer(snippet, data=data,context={'request': request})
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data)

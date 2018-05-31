@@ -1,6 +1,12 @@
 from rest_framework import serializers
 from restexample.models import Snippet, LANGUAGE_CHOICES, STYLE_CHOICES
 
+class SnippetSerializer(serializers.HyperlinkedModelSerializer):
+#class SnippetSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Snippet
+        fields = ('url','id', 'title', 'code', 'linenos', 'language', 'style')
+
 """
 class SnippetSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
@@ -30,7 +36,4 @@ class SnippetSerializer(serializers.Serializer):
 
 """
 
-class SnippetSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Snippet
-        fields = ('id', 'title', 'code', 'linenos', 'language', 'style')
+
