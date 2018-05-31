@@ -20,6 +20,7 @@ class Genre(models.Model):
     Modelo que representa un género literario (p. ej. ciencia ficción, poesía, etc.).
     """
     name = models.CharField(max_length=200, help_text="Introduce un género literario")
+    sinopsis = models.CharField(max_length=200,null=True,blank=True, help_text="Introduce una sinopsis del género")
 
     def __str__(self):
         """

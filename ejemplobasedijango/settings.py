@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     #'restexample.apps.SnippetsConfig'
     'restexample',
     'mongodbapp',
-
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
