@@ -5,7 +5,7 @@ django-tables2==1.21.2
 pygments==2.2.0
 mongoengine==0.15.0
 djangorestframework==3.8.2
-markdown==2.6.10
+markdown==2.6.11
 django-filter==1.1.0
 httpie==0.9.9
 coreapi-cli==1.0.9

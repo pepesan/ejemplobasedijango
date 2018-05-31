@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'restexample',
     'mongodbapp',
     'rest_framework',
+    'manytomany'
 ]
 
 MIDDLEWARE = [
