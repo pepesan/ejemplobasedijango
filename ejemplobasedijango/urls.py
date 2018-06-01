@@ -25,7 +25,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('mongodb/', include('mongodbapp.urls')),
     path('rest-auth/', include('rest_auth.urls')),
-    url(r'^', include('restexample.urls')),
+    #url(r'^', include('restexample.urls')),
+    path('', include('restexample.urls')),
 
 
 ]
