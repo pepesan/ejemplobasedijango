@@ -20,13 +20,13 @@ from django.conf.urls import url
 urlpatterns = [
     path('',include('home.urls')),
     path('polls/', include('polls.urls')),
-    path('', include('libros.urls')),
-    path('biblioteca/', include('biblioteca.urls')),
+    #path('', include('libros.urls')),
+    #path('biblioteca/', include('biblioteca.urls')),
     path('admin/', admin.site.urls),
-    path('mongodb/', include('mongodbapp.urls')),
-    path('rest-auth/', include('rest_auth.urls')),
+    #path('mongodb/', include('mongodbapp.urls')),
+    #path('rest-auth/', include('rest_auth.urls')),
     #url(r'^', include('restexample.urls')),
-    path('', include('restexample.urls')),
+    #path('', include('restexample.urls')),
 
 
 ]
@@ -35,10 +35,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
-from libros.scaffolding import LibroCrudManager # or from views import BookCrudManager depending on where you've put it
-book_crud = LibroCrudManager()
-urlpatterns += book_crud.get_url_patterns()
+#from libros.scaffolding import LibroCrudManager # or from views import BookCrudManager depending on where you've put it
+#book_crud = LibroCrudManager()
+#urlpatterns += book_crud.get_url_patterns()
 
 
 
