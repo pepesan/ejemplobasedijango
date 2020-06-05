@@ -1,4 +1,4 @@
-django==2.0.5
+django==2.2.13
 django-generic-scaffold==0.5.2
 django-bootstrap4==0.0.6
 django-tables2==1.21.2
